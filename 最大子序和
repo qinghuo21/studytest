@@ -1,0 +1,35 @@
+package java23;
+import java.util.LinkedList;
+import java.util.Scanner;
+import java.util.TreeSet;
+class max{
+	int n,max;
+	LinkedList<Integer> l1=new LinkedList<Integer>();
+	max(String s){
+		String[] string=s.split(",");
+		n=string.length;
+		for(int i=0;i<string.length;i++){
+			l1.add(Integer.parseInt(string[i]));
+		}
+	}
+	void getmax(){
+		TreeSet<Integer> t1=new TreeSet<Integer>();
+		for(int i=0;i<n;i++){
+			max+=l1.get(i);
+			if(i>=3){			//本题设置最大连续子序大小为4
+				t1.add(max);
+				max-=l1.get(i-3);
+			}
+		}
+		System.out.println("max="+t1.last());
+	}
+}
+public class test002 {
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		String shuru=s.nextLine();
+		max m=new max(shuru);
+		m.getmax();
+	}
+
+}

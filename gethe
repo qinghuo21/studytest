@@ -1,0 +1,45 @@
+package java23;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.TreeMap;
+import java.util.TreeSet;
+class he{
+	int n,sum,m;
+	TreeSet<Integer> t1=new TreeSet<Integer>();
+	LinkedList<Integer> l1=new LinkedList<Integer>();
+	he(String s){								//导入数据
+		String[] string=s.split(" ");
+		n=string.length;
+		for(int i=0;i<string.length;i++){
+			t1.add(Integer.parseInt(string[i]));
+		}
+		l1.addAll(t1);
+		l1.add(0);
+	}
+	void max(){
+		TreeMap<Integer,Integer> t2=new TreeMap<Integer,Integer>();
+		for(int i=0;i<n;i++){
+			sum+=l1.get(i);
+			m++;
+			if(l1.get(i+1)-l1.get(i)==1){
+				
+			}
+			else{
+				t2.put(sum, m);
+				if(i==n-1){
+				System.out.println("sum="+t2.lastKey()+"  m="+t2.get(t2.lastKey()));
+				}
+				sum=m=0;
+			}
+		}
+	}
+}
+public class test001 {
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		String shuru=s.nextLine();
+		he h1=new he(shuru);
+		h1.max();
+	}
+}
